@@ -22,11 +22,13 @@
     <ClCompile Include="action.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="action.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="map.mapfile" />

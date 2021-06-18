@@ -1,6 +1,7 @@
 #include "action.h"
 #include "main.h"
 #include "object.h"
+#include "utils.h"
 
 #include <iostream>
 #include <fstream>
@@ -9,6 +10,7 @@
 #include <tuple>
 
 std::map<std::string, Object*> objects;
+std::string intro;
 
 bool initializeMap()
 {
@@ -33,6 +35,11 @@ bool initializeMap()
 	std::string toDown;
 	while (input >> buffer)
 	{
+		if (buffer == "START_INTRO")
+		{
+			input.ignore();
+			getline(input, intro);
+		}
 		if (buffer == "START_ROOM")
 		{
 			input >> id;
@@ -96,7 +103,8 @@ int getParseInput()
 
 	std::cout << "\n\t> ";
 	std::getline(std::cin, input);
-	
+	std::cout << std::endl;
+
 	std::stringstream ss(input);
 	std::string temp;
 	int numWords = 0;
@@ -104,20 +112,21 @@ int getParseInput()
 	{
 		if (numWords == 0) 
 		{
-			verb = temp;
+			verb = Utils::toLower(temp);
 			numWords++;
 		}
 		else if (numWords == 1)
 		{
-			noun = temp;
+			noun = Utils::toLower(temp);
 			numWords++;
 		}
 	}
 
 	//quit
-	if (verb == "quit")
+	if (verb == "quit" || verb == "exit")
 	{
-		std::cout << "Goodbye!" << std::endl;
+		Utils::clearScreen();
+		std::cout << "\tGoodbye!" << std::endl << std::endl << std::endl;
 		return false;
 	}
 	//get help
@@ -127,34 +136,34 @@ int getParseInput()
 			<< "\tyou can also look in a specific directon by typing, for example, \'look north\'" << std::endl
 			<< "\tthe possible directions are north, east, souht, west, up and down." << std::endl
 			<< "\tIf you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'" << std::endl
-			<< "\tto stop, simply type quit, you will lose all progress though.." << std::endl << std::endl;
+			<< "\tto stop, simply type quit or exit, you will lose all progress though.." << std::endl << std::endl;
 	}
 	//go somewhere
 	else if (verb == "go")
 	{
 		if (noun == "north")
 		{
-			moveTo(objects["player"], directNorth);
+			moveTo(objects["player"], objects["player"]->location->toNorth);
 		}
 		else if (noun == "east")
 		{
-			moveTo(objects["player"], directEast);
+			moveTo(objects["player"], objects["player"]->location->toEast);;
 		}
 		else if (noun == "south")
 		{
-			moveTo(objects["player"], directSouth);
+			moveTo(objects["player"], objects["player"]->location->toSouth);
 		}
 		else if (noun == "west")
 		{
-			moveTo(objects["player"], directWest);
+			moveTo(objects["player"], objects["player"]->location->toWest);
 		}
 		else if (noun == "up")
 		{
-			moveTo(objects["player"], directUp);
+			moveTo(objects["player"], objects["player"]->location->toUp);
 		}
 		else if (noun == "down")
 		{
-			moveTo(objects["player"], directDown);
+			moveTo(objects["player"], objects["player"]->location->toDown);
 		}
 		else
 		{
@@ -168,29 +177,33 @@ int getParseInput()
 		{
 			look(objects["player"]);
 		}
+		else if (noun == "around") 
+		{
+			look(objects["player"]->location);
+		}
 		else if (noun == "north")
 		{
-			look(objects["player"], directNorth);
+			look(objects["player"]->location->toNorth);
 		}
 		else if (noun == "east")
 		{
-			look(objects["player"], directEast);
+			look(objects["player"]->location->toEast);
 		}
 		else if (noun == "south")
 		{
-			look(objects["player"], directSouth);
+			look(objects["player"]->location->toSouth);
 		}
 		else if (noun == "west")
 		{
-			look(objects["player"], directWest);
+			look(objects["player"]->location->toWest);
 		}
 		else if (noun == "up")
 		{
-			look(objects["player"], directUp);
+			look(objects["player"]->location->toUp);
 		}
 		else if (noun == "down")
 		{
-			look(objects["player"], directDown);
+			look(objects["player"]->location->toDown);
 		}
 		else
 		{
@@ -232,23 +245,24 @@ int getParseInput()
 
 int main()
 {
+	Utils::clearScreen();
+	
 	if (!initializeMap())
 	{
 		std::cout << "\tMap loading went wrong!" << std::endl;
 		return false;
 	}
+	
+	Utils::printHeader(objects["player"]->location->name);
 
-	std::cout << "\t-------------------------------------------------------------------------------" << std::endl
-		<< "\t-------------------------| Welcome to TextAdventure! |-------------------------" << std::endl
-		<< "\t-------------------------|      Truly original!      |-------------------------" << std::endl
-		<< "\t-------------------------|          amazing          |-------------------------" << std::endl
-		<< "\t-------------------------------------------------------------------------------" << std::endl << std::endl << std::endl
-		<< "\tAre you ready to begin? You better...." << std::endl << std::endl << std::endl
-		<< "\tOh damn! You're on the wrong bus!" << std::endl
-		<< "\tYou have no idea where this one is going and this late at night you are in no mood to find out either!" << std::endl
-		<< "\tBetter to get off at the first stop and take the next one back I guess!" << std::endl << std::endl << std::endl << std::endl;
+	std::cout << "\t" << "-------------------------------------------------------------------------------" << std::endl
+		<< "\t" << "-------------------------| Welcome to TextAdventure! |-------------------------" << std::endl
+		<< "\t" << "-------------------------|      Truly original!      |-------------------------" << std::endl
+		<< "\t" << "-------------------------|          amazing          |-------------------------" << std::endl
+		<< "\t" << "-------------------------------------------------------------------------------" << std::endl << std::endl 
+		<< "\tAre you ready to begin ? You better...." << std::endl << std::endl << std::endl;
 
-	look(objects["player"]);
+	Utils::printInFixedWidth("\t" + intro);
 
 	std::cout << "\tNow what..." << std::endl << std::endl;
 

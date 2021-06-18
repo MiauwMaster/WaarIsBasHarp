@@ -10,8 +10,7 @@ const int directUp = 5;
 const int directDown = 6;
 
 
-void moveTo(Object* player, int direction);
+void moveTo(Object* player, Object* destination);
 void look(Object* player);
-void look(Object* player, int direction);
 void take(Object* player, std::string name);
 void drop(Object* player, std::string name); 

@@ -1,42 +1,45 @@
+START_INTRO
+Oh damn! You're on the wrong bus! You have no idea where this one is going and this late at night you are in no mood to find out either! Better to get off at the first stop and take the next one back I guess!
+END_INTRO
 START_ROOM
 player
 player
-yourself
+you see yourself. you look tired.
 END_ROOM
 START_ROOM
 busStop
 bus stop
-a bus stop. There is no bus in sight. The road is completely empty. The time table at the bus stop shows that this bus was the last one today, and tomorrow no buses will come, because tomorrow is Sunday. You look at your phone, but have no signal. Night is falling.
+you see a bus stop. There is no bus in sight. The road is completely empty. The time table at the bus stop shows that this bus was the last one today, and tomorrow no buses will come, because tomorrow is Sunday. You look at your phone, but have no signal. Night is falling.
 END_ROOM
 START_ROOM
 house
 house
-a house, a hovel really. the roof seems to be caving in...
+you see a house, a hovel really. the roof seems to be caving in...
 END_ROOM
 START_ROOM
 hallway
 hallway
-a hallway.
+you see a hallway.
 END_ROOM
 START_ROOM
 livingRoom
 living room
-the living room. It stinks of mold in here... yuck!
+you see the living room. It stinks of mold in here... yuck!
 END_ROOM
 START_ROOM
 kitchen
 kitchen
-the kitchen. everything's broken
+you see the kitchen. everything's broken
 END_ROOM
 START_ROOM
 garden
 garden
-the garden, it has some real potential
+you see the garden, it has some real potential
 END_ROOM
 START_ROOM
 shed
 shed
-a shed. so. many. spiders
+you see a shed. so. many. spiders. YUCK!!
 END_ROOM
 
 START_NEIGHBOUR
