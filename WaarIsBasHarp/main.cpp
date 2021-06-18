@@ -40,6 +40,7 @@ bool initializeMap()
 			input.ignore();
 			getline(input, intro);
 		}
+
 		if (buffer == "START_ROOM")
 		{
 			input >> id;
@@ -49,18 +50,20 @@ bool initializeMap()
 			getline(input, description);
 			objects.insert(std::pair<std::string, Object*>(id, new Object(name, description)));
 		}
-		if(buffer == "END_ROOM" || buffer == "END_NEIGHBOUR")
-		// clear strings
-		id.clear();
-		name.clear();
-		description.clear();
-		location.clear();
-		toNorth.clear();
-		toEast.clear();
-		toSouth.clear();
-		toWest.clear();
-		toUp.clear();
-		toDown.clear();
+
+		if (buffer == "END_ROOM" || buffer == "END_NEIGHBOUR") {
+			// clear strings
+			id.clear();
+			name.clear();
+			description.clear();
+			location.clear();
+			toNorth.clear();
+			toEast.clear();
+			toSouth.clear();
+			toWest.clear();
+			toUp.clear();
+			toDown.clear();
+		}
 
 		// setup neighbours
 		if (buffer == "START_NEIGHBOUR")
@@ -207,7 +210,7 @@ int getParseInput()
 		}
 		else
 		{
-			std::cout << "\tDo you talk to your mother like that?" << std::endl;
+			std::cout << "\tlook where?" << std::endl;
 		}
 
 	}
