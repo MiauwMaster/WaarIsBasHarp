@@ -17,7 +17,7 @@ void moveTo(Object* player, Object* destination)
 	}
 	else
 	{
-		std::cout << "\tI can't go there" << std::endl;
+		Utils::printInFixedWidth("\tI can't go there");
 	}
 }
 

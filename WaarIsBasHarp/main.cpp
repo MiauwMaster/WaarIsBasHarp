@@ -129,17 +129,18 @@ int getParseInput()
 	if (verb == "quit" || verb == "exit")
 	{
 		Utils::clearScreen();
-		std::cout << "\tGoodbye!" << std::endl << std::endl << std::endl;
+		Utils::printInFixedWidth("\tGoodbye!");
 		return false;
 	}
 	//get help
-	if (verb == "help") 
+	else if (verb == "help") 
 	{
-		std::cout << "\tYou can look at where you are now by typing \'look\'" << std::endl
-			<< "\tyou can also look in a specific directon by typing, for example, \'look north\'" << std::endl
-			<< "\tthe possible directions are north, east, souht, west, up and down." << std::endl
-			<< "\tIf you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'" << std::endl
-			<< "\tto stop, simply type quit or exit, you will lose all progress though.." << std::endl << std::endl;
+		Utils::printInFixedWidth("\tYou can look at where you are now by typing \'look\'");
+		Utils::printInFixedWidth("\tTo see if there's anything nearby you can \'look around\'");
+		Utils::printInFixedWidth("\tyou can also look in a specific directon by typing, for example, \'look north\'");
+		Utils::printInFixedWidth("\tthe possible directions are north, east, souht, west, up and down.");
+		Utils::printInFixedWidth("\tIf you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
+		Utils::printInFixedWidth("\tto stop, simply type quit or exit, you will lose all progress though..");
 	}
 	//go somewhere
 	else if (verb == "go")
@@ -150,7 +151,7 @@ int getParseInput()
 		}
 		else if (noun == "east")
 		{
-			moveTo(objects["player"], objects["player"]->location->toEast);;
+			moveTo(objects["player"], objects["player"]->location->toEast);
 		}
 		else if (noun == "south")
 		{
@@ -170,7 +171,7 @@ int getParseInput()
 		}
 		else
 		{
-			std::cout << "\tgo where?" << std::endl;
+			Utils::printInFixedWidth("\tgo where?");
 		}
 	}
 	//look at something
@@ -181,25 +182,19 @@ int getParseInput()
 			look(objects["player"]);
 			for (auto& item : objects)
 			{
-				if (item.second != nullptr)
+				if (item.second != nullptr && item.second->location == objects["player"])
 				{
-					if (item.second->location == objects["player"])
-					{
-						look(item.second);
-					}
+					look(item.second);
 				}
 			}
 		}
-		else if (noun == "around") 
+		else if (noun == "around")
 		{
-			for (auto& item: objects )
+			for (auto& item : objects)
 			{
-				if (item.second != nullptr)
+				if (item.second != nullptr && item.second->location == objects["player"]->location and item.first != "player")
 				{
-					if (item.second->location == objects["player"]->location and item.first != "player")
-					{
-						look(item.second);
-					}
+					look(item.second);
 				}
 			}
 		}
@@ -229,7 +224,7 @@ int getParseInput()
 		}
 		else
 		{
-			std::cout << "\tlook where?" << std::endl;
+			Utils::printInFixedWidth("\tlook where?");
 		}
 
 	}
@@ -241,11 +236,11 @@ int getParseInput()
 			if (objects[noun] != nullptr)
 				take(objects["player"], objects[noun]);
 			else
-				std::cout << "\ttake what?" << std::endl;
+				Utils::printInFixedWidth("\ttake what?");
 		}
 		else
 		{
-			std::cout << "\ttake what?" << std::endl;
+			Utils::printInFixedWidth("\ttake what?");
 		}
 	}
 	//drop stuff
@@ -254,18 +249,22 @@ int getParseInput()
 		if (noun != "")
 		{
 			if (objects[noun] != nullptr)
+			{
 				drop(objects["player"], objects[noun]);
+			}
 			else
-				std::cout << "\tdrop what?" << std::endl;
+			{
+				Utils::printInFixedWidth("\tdrop what?");
+			}
 		}
 		else
 		{
-			std::cout << "\tdrop what?" << std::endl;
+			Utils::printInFixedWidth("\tdrop what?");
 		}
 	}
 	else
 	{
-		std::cout << "\twhat now?";
+		Utils::printInFixedWidth("\twhat now?");
 	}
 
 	return true;
@@ -277,22 +276,24 @@ int main()
 	
 	if (!initializeMap())
 	{
-		std::cout << "\tMap loading went wrong!" << std::endl;
+		Utils::printInFixedWidth("\tMap loading went wrong!");
 		return false;
 	}
 	
 	Utils::printHeader(objects["player"]->location->name);
+	
 
-	std::cout << "\t" << "-------------------------------------------------------------------------------" << std::endl
-		<< "\t" << "-------------------------| Welcome to TextAdventure! |-------------------------" << std::endl
-		<< "\t" << "-------------------------|      Truly original!      |-------------------------" << std::endl
-		<< "\t" << "-------------------------|          amazing          |-------------------------" << std::endl
-		<< "\t" << "-------------------------------------------------------------------------------" << std::endl << std::endl 
-		<< "\tAre you ready to begin ? You better...." << std::endl << std::endl << std::endl;
+	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------");
+	Utils::printInFixedWidth("\t-------------------------| Welcome to TextAdventure! |-------------------------");
+	Utils::printInFixedWidth("\t-------------------------|      Truly original!      |-------------------------");
+	Utils::printInFixedWidth("\t-------------------------|          amazing          |-------------------------");
+	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------\n");
+
+	Utils::printInFixedWidth("\tAre you ready to begin ? You better....\n\n");
 
 	Utils::printInFixedWidth("\t" + intro);
 
-	std::cout << "\tNow what..." << std::endl << std::endl;
+	Utils::printInFixedWidth("\tNow what...\n");
 
 	while (getParseInput());
 }
