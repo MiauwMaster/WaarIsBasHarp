@@ -140,6 +140,7 @@ int getParseInput()
 		Utils::printInFixedWidth("\tyou can also look in a specific directon by typing, for example, \'look north\'");
 		Utils::printInFixedWidth("\tthe possible directions are north, east, souht, west, up and down.");
 		Utils::printInFixedWidth("\tIf you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
+		Utils::printInFixedWidth("\tYou can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
 		Utils::printInFixedWidth("\tto stop, simply type quit or exit, you will lose all progress though..");
 	}
 	//go somewhere
@@ -190,6 +191,7 @@ int getParseInput()
 		}
 		else if (noun == "around")
 		{
+			look(objects["player"]->location);
 			for (auto& item : objects)
 			{
 				if (item.second != nullptr && item.second->location == objects["player"]->location and item.first != "player")
@@ -273,7 +275,7 @@ int getParseInput()
 int main()
 {
 	Utils::clearScreen();
-	
+
 	if (!initializeMap())
 	{
 		Utils::printInFixedWidth("\tMap loading went wrong!");
@@ -281,19 +283,17 @@ int main()
 	}
 	
 	Utils::printHeader(objects["player"]->location->name);
-	
 
 	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------");
 	Utils::printInFixedWidth("\t-------------------------| Welcome to TextAdventure! |-------------------------");
 	Utils::printInFixedWidth("\t-------------------------|      Truly original!      |-------------------------");
 	Utils::printInFixedWidth("\t-------------------------|          amazing          |-------------------------");
-	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------\n");
-
-	Utils::printInFixedWidth("\tAre you ready to begin ? You better....\n\n");
-
+	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------");
+	Utils::printInFixedWidth("\n");
 	Utils::printInFixedWidth("\t" + intro);
-
-	Utils::printInFixedWidth("\tNow what...\n");
-
+	Utils::printInFixedWidth("\n");
+	look(objects["player"]->location);
+	Utils::printInFixedWidth("\n");
+	Utils::printInFixedWidth("\tNow what...");
 	while (getParseInput());
 }

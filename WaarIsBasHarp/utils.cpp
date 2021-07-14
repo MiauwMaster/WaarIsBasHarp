@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cctype>
+#include <vector>
 
 #include <stdlib.h>
 
@@ -44,13 +45,37 @@ std::string Utils::toLower(std::string data)
 
 void Utils::printInFixedWidth(const std::string& data, int width)
 {
-	for (int i = 0; i < data.size(); ++i)
+	std::size_t dataLen = data.size();
+
+	if (dataLen <= 80) 
 	{
+		std::cout << data << std::endl;
+		return;
+	}
+
+	std::string buf = data;
+	std::vector<std::string> splitStrings;
+	for (std::size_t i = 0; i != buf.size(); ++i)
+	{
+		if (buf.size() < width)
+		{
+			splitStrings.push_back(buf);
+			break;
+		}
 		if (i != 0 && i % width == 0)
 		{
-			std::cout << "\n\t";
+			while (buf[i] != ' ')
+			{
+				--i;
+			}
+			splitStrings.push_back(buf.substr(0, ++i));
+			buf.erase(0, i);
+			buf = '\t' + buf;
+			i = 0;
 		}
-		std::cout << data[i];
 	}
-	std::cout << std::endl;
+	for (auto& item : splitStrings)
+	{
+		std::cout << item << std::endl;
+	}
 }
