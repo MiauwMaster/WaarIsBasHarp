@@ -179,10 +179,29 @@ int getParseInput()
 		if (noun == "")
 		{
 			look(objects["player"]);
+			for (auto& item : objects)
+			{
+				if (item.second != nullptr)
+				{
+					if (item.second->location == objects["player"])
+					{
+						look(item.second);
+					}
+				}
+			}
 		}
 		else if (noun == "around") 
 		{
-			look(objects["player"]->location);
+			for (auto& item: objects )
+			{
+				if (item.second != nullptr)
+				{
+					if (item.second->location == objects["player"]->location and item.first != "player")
+					{
+						look(item.second);
+					}
+				}
+			}
 		}
 		else if (noun == "north")
 		{
@@ -219,7 +238,10 @@ int getParseInput()
 	{
 		if (noun != "")
 		{
-			take(objects["player"], noun);
+			if (objects[noun] != nullptr)
+				take(objects["player"], objects[noun]);
+			else
+				std::cout << "\ttake what?" << std::endl;
 		}
 		else
 		{
@@ -231,7 +253,10 @@ int getParseInput()
 	{
 		if (noun != "")
 		{
-			drop(objects["player"], noun);
+			if (objects[noun] != nullptr)
+				drop(objects["player"], objects[noun]);
+			else
+				std::cout << "\tdrop what?" << std::endl;
 		}
 		else
 		{

@@ -9,7 +9,7 @@ END_ROOM
 START_ROOM
 busStop
 bus stop
-you see a bus stop. There is no bus in sight. The road is completely empty. The time table at the bus stop shows that this bus was the last one today, and tomorrow no buses will come, because tomorrow is Sunday. You look at your phone, but have no signal. Night is falling.
+you see a bus stop. There is no bus in sight. The road is completely empty. The time table at the bus stop shows that this bus was the last one today, and tomorrow no buses will come, because tomorrow is Sunday.
 END_ROOM
 START_ROOM
 house
@@ -40,6 +40,11 @@ START_ROOM
 shed
 shed
 you see a shed. so. many. spiders. YUCK!!
+END_ROOM
+START_ROOM
+coin
+coin
+you see a shiny golden coin!
 END_ROOM
 
 START_NEIGHBOUR
@@ -119,6 +124,16 @@ TONORTH		NONE
 TOEAST		NONE
 TOSOUTH		NONE
 TOWEST		garden
+TOUP		NONE
+TODOWN		NONE
+END_NEIGBOUR
+START_NEIGHBOUR
+coin
+LOCATION	busStop
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
 TOUP		NONE
 TODOWN		NONE
 END_NEIGBOUR

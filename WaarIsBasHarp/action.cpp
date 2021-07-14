@@ -29,15 +29,27 @@ void look(Object* object)
 	}
 	else 
 	{
-		std::cout << "\t" << "Nothing to see here..." << std::endl;
+		Utils::printInFixedWidth("\tNothing to see here...");
 	}
 }
-void take(Object* player, std::string name)
+void take(Object* player, Object* toTake)
 {
-	std::cout << "\t" << "Can't do that yet..." << std::endl;
+	if (player->location == toTake->location)
+	{
+		toTake->location = player;
+		Utils::printInFixedWidth("\tTaken " + toTake->name);
+	}
+	else
+		Utils::printInFixedWidth("\tI can't find that...");
 }
 
-void drop(Object* player, std::string name)
+void drop(Object* player, Object* toDrop)
 {
-	std::cout << "\t" << "Can't do that yet..." << std::endl;
+	if (toDrop->location == player)
+	{
+		toDrop->location = player->location;
+		Utils::printInFixedWidth("\tDropped " + toDrop->name);
+	}
+	else
+		Utils::printInFixedWidth("\tI don't have that...");
 }
