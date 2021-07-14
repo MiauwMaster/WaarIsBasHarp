@@ -45,11 +45,10 @@ std::string Utils::toLower(std::string data)
 
 void Utils::printInFixedWidth(const std::string& data, int width)
 {
-	std::size_t dataLen = data.size();
 
-	if (dataLen <= 80) 
+	if (data.size() <= width) 
 	{
-		std::cout << data << std::endl;
+		std::cout << "\t" << data << std::endl;
 		return;
 	}
 
@@ -70,12 +69,11 @@ void Utils::printInFixedWidth(const std::string& data, int width)
 			}
 			splitStrings.push_back(buf.substr(0, ++i));
 			buf.erase(0, i);
-			buf = '\t' + buf;
 			i = 0;
 		}
 	}
 	for (auto& item : splitStrings)
 	{
-		std::cout << item << std::endl;
+		std::cout << "\t" << item << std::endl;
 	}
 }

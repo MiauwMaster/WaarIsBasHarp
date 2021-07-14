@@ -17,7 +17,7 @@ void moveTo(Object* player, Object* destination)
 	}
 	else
 	{
-		Utils::printInFixedWidth("\tI can't go there");
+		Utils::printInFixedWidth("I can't go there");
 	}
 }
 
@@ -25,11 +25,11 @@ void look(Object* object)
 {
 	if (object != nullptr)
 	{
-		Utils::printInFixedWidth("\t" + object->description);
+		Utils::printInFixedWidth(object->description);
 	}
 	else 
 	{
-		Utils::printInFixedWidth("\tNothing to see here...");
+		Utils::printInFixedWidth("Nothing to see here...");
 	}
 }
 void take(Object* player, Object* toTake)
@@ -37,10 +37,10 @@ void take(Object* player, Object* toTake)
 	if (player->location == toTake->location)
 	{
 		toTake->location = player;
-		Utils::printInFixedWidth("\tTaken " + toTake->name);
+		Utils::printInFixedWidth("Taken " + toTake->name);
 	}
 	else
-		Utils::printInFixedWidth("\tI can't find that...");
+		Utils::printInFixedWidth("I can't find that...");
 }
 
 void drop(Object* player, Object* toDrop)
@@ -48,8 +48,8 @@ void drop(Object* player, Object* toDrop)
 	if (toDrop->location == player)
 	{
 		toDrop->location = player->location;
-		Utils::printInFixedWidth("\tDropped " + toDrop->name);
+		Utils::printInFixedWidth("Dropped " + toDrop->name);
 	}
 	else
-		Utils::printInFixedWidth("\tI don't have that...");
+		Utils::printInFixedWidth("I don't have that...");
 }

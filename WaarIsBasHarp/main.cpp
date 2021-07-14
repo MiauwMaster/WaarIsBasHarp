@@ -19,7 +19,7 @@ bool initializeMap()
 	std::ifstream input(filename);
 	if (!input.good())
 	{
-		std::cout << "\tLoading file "<< filename << " went wrong" << std::endl;
+		std::cout << "Loading file "<< filename << " went wrong" << std::endl;
 		return false;
 	}
 	std::string buffer;
@@ -129,19 +129,19 @@ int getParseInput()
 	if (verb == "quit" || verb == "exit")
 	{
 		Utils::clearScreen();
-		Utils::printInFixedWidth("\tGoodbye!");
+		Utils::printInFixedWidth("Goodbye!");
 		return false;
 	}
 	//get help
 	else if (verb == "help") 
 	{
-		Utils::printInFixedWidth("\tYou can look at where you are now by typing \'look\'");
-		Utils::printInFixedWidth("\tTo see if there's anything nearby you can \'look around\'");
-		Utils::printInFixedWidth("\tyou can also look in a specific directon by typing, for example, \'look north\'");
-		Utils::printInFixedWidth("\tthe possible directions are north, east, souht, west, up and down.");
-		Utils::printInFixedWidth("\tIf you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
-		Utils::printInFixedWidth("\tYou can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
-		Utils::printInFixedWidth("\tto stop, simply type quit or exit, you will lose all progress though..");
+		Utils::printInFixedWidth("You can look at where you are now by typing \'look\'");
+		Utils::printInFixedWidth("To see if there's anything nearby you can \'look around\'");
+		Utils::printInFixedWidth("you can also look in a specific directon by typing, for example, \'look north\'");
+		Utils::printInFixedWidth("the possible directions are north, east, souht, west, up and down.");
+		Utils::printInFixedWidth("If you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
+		Utils::printInFixedWidth("You can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
+		Utils::printInFixedWidth("to stop, simply type quit or exit, you will lose all progress though..");
 	}
 	//go somewhere
 	else if (verb == "go")
@@ -172,7 +172,7 @@ int getParseInput()
 		}
 		else
 		{
-			Utils::printInFixedWidth("\tgo where?");
+			Utils::printInFixedWidth("go where?");
 		}
 	}
 	//look at something
@@ -192,6 +192,7 @@ int getParseInput()
 		else if (noun == "around")
 		{
 			look(objects["player"]->location);
+			Utils::printInFixedWidth("\n");
 			for (auto& item : objects)
 			{
 				if (item.second != nullptr && item.second->location == objects["player"]->location and item.first != "player")
@@ -226,7 +227,7 @@ int getParseInput()
 		}
 		else
 		{
-			Utils::printInFixedWidth("\tlook where?");
+			Utils::printInFixedWidth("look where?");
 		}
 
 	}
@@ -238,11 +239,11 @@ int getParseInput()
 			if (objects[noun] != nullptr)
 				take(objects["player"], objects[noun]);
 			else
-				Utils::printInFixedWidth("\ttake what?");
+				Utils::printInFixedWidth("take what?");
 		}
 		else
 		{
-			Utils::printInFixedWidth("\ttake what?");
+			Utils::printInFixedWidth("take what?");
 		}
 	}
 	//drop stuff
@@ -256,17 +257,17 @@ int getParseInput()
 			}
 			else
 			{
-				Utils::printInFixedWidth("\tdrop what?");
+				Utils::printInFixedWidth("drop what?");
 			}
 		}
 		else
 		{
-			Utils::printInFixedWidth("\tdrop what?");
+			Utils::printInFixedWidth("drop what?");
 		}
 	}
 	else
 	{
-		Utils::printInFixedWidth("\twhat now?");
+		Utils::printInFixedWidth("what now?");
 	}
 
 	return true;
@@ -278,22 +279,22 @@ int main()
 
 	if (!initializeMap())
 	{
-		Utils::printInFixedWidth("\tMap loading went wrong!");
+		Utils::printInFixedWidth("Map loading went wrong!");
 		return false;
 	}
 	
 	Utils::printHeader(objects["player"]->location->name);
 
-	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------");
-	Utils::printInFixedWidth("\t-------------------------| Welcome to TextAdventure! |-------------------------");
-	Utils::printInFixedWidth("\t-------------------------|      Truly original!      |-------------------------");
-	Utils::printInFixedWidth("\t-------------------------|          amazing          |-------------------------");
-	Utils::printInFixedWidth("\t-------------------------------------------------------------------------------");
+	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
+	Utils::printInFixedWidth("-------------------------| Welcome to TextAdventure! |-------------------------");
+	Utils::printInFixedWidth("-------------------------|      Truly original!      |-------------------------");
+	Utils::printInFixedWidth("-------------------------|          amazing          |-------------------------");
+	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
 	Utils::printInFixedWidth("\n");
-	Utils::printInFixedWidth("\t" + intro);
+	Utils::printInFixedWidth(intro);
 	Utils::printInFixedWidth("\n");
 	look(objects["player"]->location);
 	Utils::printInFixedWidth("\n");
-	Utils::printInFixedWidth("\tNow what...");
+	Utils::printInFixedWidth("Now what...");
 	while (getParseInput());
 }
