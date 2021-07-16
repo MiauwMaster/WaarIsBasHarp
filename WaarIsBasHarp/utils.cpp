@@ -7,9 +7,9 @@
 
 #include <stdlib.h>
 
-void Utils::printHeader(const std::string& headerText)
+void Utils::printHeader(const std::string& headerText, int width)
 {
-	drawHorizontalBar(87);
+	drawHorizontalBar(width);
 	std::string head = "| " + headerText + " |";
 	std::cout << " " << head << std::endl << " ";
 	drawHorizontalBar(head.size());
@@ -38,42 +38,41 @@ void Utils::clearScreen()
 std::string Utils::toLower(std::string data)
 {
 	std::string newString = data;
-	std::transform(newString.begin(), newString.end(), newString.begin(),
-		[](unsigned char c) { return std::tolower(c); });
+	std::transform(newString.begin(), newString.end(), newString.begin(), [](unsigned char c) { return std::tolower(c); });
 	return newString;
 }
 
-void Utils::printInFixedWidth(const std::string& data, int width)
+void Utils::printInFixedWidth(const std::string& data, int width, int indent)
 {
-
-	if (data.size() <= width) 
+	if (data.size() > width) 
 	{
-		std::cout << "\t" << data << std::endl;
-		return;
-	}
-
-	std::string buf = data;
-	std::vector<std::string> splitStrings;
-	for (std::size_t i = 0; i != buf.size(); ++i)
-	{
-		if (buf.size() < width)
+		std::string buf = data;
+		std::vector<std::string> splitStrings;
+		for (std::size_t i = 0; i != buf.size(); ++i)
 		{
-			splitStrings.push_back(buf);
-			break;
-		}
-		if (i != 0 && i % width == 0)
-		{
-			while (buf[i] != ' ')
+			if (buf.size() < width)
 			{
-				--i;
+				splitStrings.push_back(buf);
+				break;
 			}
-			splitStrings.push_back(buf.substr(0, ++i));
-			buf.erase(0, i);
-			i = 0;
+			if (i != 0 && i % width == 0)
+			{
+				while (buf[i] != ' ')
+				{
+					--i;
+				}
+				splitStrings.push_back(buf.substr(0, ++i));
+				buf.erase(0, i);
+				i = 0;
+			}
+		}
+		for (auto& item : splitStrings)
+		{
+			std::cout << std::string(indent, ' ') << item << std::endl;
 		}
 	}
-	for (auto& item : splitStrings)
+	else
 	{
-		std::cout << "\t" << item << std::endl;
+		std::cout << std::string(indent, ' ') << data << std::endl;
 	}
 }

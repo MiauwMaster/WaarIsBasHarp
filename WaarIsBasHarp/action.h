@@ -8,7 +8,7 @@ const int directWest = 4;
 const int directUp = 5;
 const int directDown = 6;
 
-
+void initscreen(Object* player);
 void moveTo(Object* player, Object* destination);
 void look(Object* player);
 void take(Object* player, Object* toTake);

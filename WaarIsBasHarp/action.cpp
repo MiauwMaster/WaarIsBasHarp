@@ -6,13 +6,18 @@
 #include <iostream>
 
 
+void initscreen(Object* player)
+{
+	Utils::clearScreen();
+	Utils::printHeader(player->location->name);
+}
+
 void moveTo(Object* player, Object* destination)
 {
 	if (destination != nullptr)
 	{
 		player->location = destination;
-		Utils::clearScreen();
-		Utils::printHeader(player->location->name);
+		initscreen(player);
 		look(player->location);
 	}
 	else

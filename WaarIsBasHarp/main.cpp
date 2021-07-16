@@ -141,7 +141,7 @@ int getParseInput()
 		Utils::printInFixedWidth("the possible directions are north, east, souht, west, up and down.");
 		Utils::printInFixedWidth("If you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
 		Utils::printInFixedWidth("You can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
-		Utils::printInFixedWidth("to stop, simply type quit or exit, you will lose all progress though..");
+		Utils::printInFixedWidth("to stop, simply type \'quit\' or \'exit\', you will lose all progress though..");
 	}
 	//go somewhere
 	else if (verb == "go")
@@ -283,7 +283,7 @@ int main()
 		return false;
 	}
 	
-	Utils::printHeader(objects["player"]->location->name);
+	initscreen(objects["player"]);
 
 	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
 	Utils::printInFixedWidth("-------------------------| Welcome to TextAdventure! |-------------------------");
