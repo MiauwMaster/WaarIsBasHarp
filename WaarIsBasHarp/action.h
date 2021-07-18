@@ -10,6 +10,7 @@ const int directDown = 6;
 
 void initscreen(Object* player);
 void moveTo(Object* player, Object* destination);
+bool hasNeeded(Object* player, Object* destination);
 void look(Object* player);
 void take(Object* player, Object* toTake);
 void drop(Object* player, Object* toDrop);

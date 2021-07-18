@@ -25,7 +25,7 @@ void Object::Setup(std::string name, std::string description)
 /// <param name="toWest">object to west</param>
 /// <param name="toUp">object one level up</param>
 /// <param name="toDown">object one level down</param>
-void Object::SetupNeighbours(Object* location, Object* toNorth, Object* toEast, Object* toSouth, Object* toWest, Object* toUp, Object* toDown)
+void Object::SetupNeighbours(Object* location, Object* toNorth, Object* toEast, Object* toSouth, Object* toWest, Object* toUp, Object* toDown, Object* needed)
 {
 	this->location = location;
 	this->toNorth = toNorth;
@@ -34,4 +34,5 @@ void Object::SetupNeighbours(Object* location, Object* toNorth, Object* toEast, 
 	this->toWest = toWest;
 	this->toUp = toUp;
 	this->toDown = toDown;
+	this->needed = needed;
 }

@@ -42,37 +42,26 @@ std::string Utils::toLower(std::string data)
 	return newString;
 }
 
-void Utils::printInFixedWidth(const std::string& data, int width, int indent)
+void Utils::printInFixedWidth(const std::string& data, int width, std::string prefix)
 {
-	if (data.size() > width) 
+	std::string buffer = data;
+	std::vector<std::string> splitStrings;
+
+	while (buffer.size() > width)
 	{
-		std::string buf = data;
-		std::vector<std::string> splitStrings;
-		for (std::size_t i = 0; i != buf.size(); ++i)
+		int i = width;
+		while (buffer[i] != ' ')
 		{
-			if (buf.size() < width)
-			{
-				splitStrings.push_back(buf);
-				break;
-			}
-			if (i != 0 && i % width == 0)
-			{
-				while (buf[i] != ' ')
-				{
-					--i;
-				}
-				splitStrings.push_back(buf.substr(0, ++i));
-				buf.erase(0, i);
-				i = 0;
-			}
+			--i;
 		}
-		for (auto& item : splitStrings)
-		{
-			std::cout << std::string(indent, ' ') << item << std::endl;
-		}
+		splitStrings.push_back(buffer.substr(0, i));
+		buffer.erase(0, ++i);
 	}
-	else
+
+	for (auto& item : splitStrings)
 	{
-		std::cout << std::string(indent, ' ') << data << std::endl;
+		std::cout << prefix << item << std::endl;
 	}
+
+	std::cout << prefix << buffer << std::endl;
 }

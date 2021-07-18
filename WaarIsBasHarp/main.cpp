@@ -33,6 +33,7 @@ bool initializeMap()
 	std::string toWest;
 	std::string toUp;
 	std::string toDown;
+	std::string needed;
 	while (input >> buffer)
 	{
 		if (buffer == "START_INTRO")
@@ -63,6 +64,7 @@ bool initializeMap()
 			toWest.clear();
 			toUp.clear();
 			toDown.clear();
+			needed.clear();
 		}
 
 		// setup neighbours
@@ -91,8 +93,11 @@ bool initializeMap()
 			input >> buffer; // todown
 			input >> toDown;
 
+			input >> buffer; // needed
+			input >> needed;
+
 			// setup neighbours
-			objects[id]->SetupNeighbours(objects[location], objects[toNorth], objects[toEast], objects[toSouth], objects[toWest], objects[toUp], objects[toDown]);
+			objects[id]->SetupNeighbours(objects[location], objects[toNorth], objects[toEast], objects[toSouth], objects[toWest], objects[toUp], objects[toDown], objects[needed]);
 		}
 	}
 	return true;

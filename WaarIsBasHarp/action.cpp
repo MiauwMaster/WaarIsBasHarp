@@ -16,13 +16,32 @@ void moveTo(Object* player, Object* destination)
 {
 	if (destination != nullptr)
 	{
-		player->location = destination;
-		initscreen(player);
-		look(player->location);
+		if (hasNeeded(player, destination))
+		{
+			player->location = destination;
+			initscreen(player);
+			look(player->location);
+		}
+		else
+		{
+			Utils::printInFixedWidth(std::string("You need a  to go there...").insert(11, destination->needed->name));
+		}
 	}
 	else
 	{
 		Utils::printInFixedWidth("I can't go there");
+	}
+}
+
+bool hasNeeded(Object* player, Object* destination)
+{
+	if (destination->needed == nullptr || destination->needed->location == player)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
 
@@ -39,7 +58,11 @@ void look(Object* object)
 }
 void take(Object* player, Object* toTake)
 {
-	if (player->location == toTake->location)
+	if (toTake == player)
+	{
+		Utils::printInFixedWidth("I can't take myself... Weirdo...");
+	}
+	else if (player->location == toTake->location)
 	{
 		toTake->location = player;
 		Utils::printInFixedWidth("Taken " + toTake->name);
@@ -50,7 +73,11 @@ void take(Object* player, Object* toTake)
 
 void drop(Object* player, Object* toDrop)
 {
-	if (toDrop->location == player)
+	if (toDrop == player)
+	{
+		Utils::printInFixedWidth("I'll never drop myself!");
+	}
+	else if (toDrop->location == player)
 	{
 		toDrop->location = player->location;
 		Utils::printInFixedWidth("Dropped " + toDrop->name);

@@ -14,7 +14,9 @@ public:
 	Object* toUp = nullptr;
 	Object* toDown = nullptr;
 
+	Object* needed = nullptr;
+
 	Object(std::string name, std::string description);
 	void Setup(std::string name, std::string description);
-	void SetupNeighbours(Object* location, Object* toNorth, Object* toEast, Object* toSouth, Object* toWest, Object* toUp, Object* toDown);
+	void SetupNeighbours(Object* location, Object* toNorth, Object* toEast, Object* toSouth, Object* toWest, Object* toUp, Object* toDown, Object* needed);
 };
