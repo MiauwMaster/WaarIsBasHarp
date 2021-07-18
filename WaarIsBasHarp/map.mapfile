@@ -42,9 +42,9 @@ shed
 you see a shed. so. many. spiders. YUCK!!
 END_ROOM
 START_ROOM
-key
-key
-you see a key!
+rustyKey
+rusty key
+you see a rusty key!
 END_ROOM
 
 START_NEIGHBOUR
@@ -89,7 +89,7 @@ TOSOUTH		kitchen
 TOWEST		NONE
 TOUP		NONE
 TODOWN		NONE
-NEEDED		key
+NEEDED		rustyKey
 END_NEIGBOUR
 START_NEIGHBOUR
 livingRoom
@@ -136,7 +136,7 @@ TODOWN		NONE
 NEEDED		NONE
 END_NEIGBOUR
 START_NEIGHBOUR
-key
+rustyKey
 LOCATION	busStop
 TONORTH		NONE
 TOEAST		NONE

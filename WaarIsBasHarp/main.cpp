@@ -122,10 +122,16 @@ int getParseInput()
 		{
 			verb = Utils::toLower(temp);
 			numWords++;
-		}
+		}		
 		else if (numWords == 1)
 		{
-			noun = Utils::toLower(temp);
+			noun += Utils::toLower(temp);
+			numWords++;
+		}
+		else
+		{
+			noun += " ";
+			noun += Utils::toLower(temp);
 			numWords++;
 		}
 	}
@@ -197,7 +203,6 @@ int getParseInput()
 		else if (noun == "around")
 		{
 			look(objects["player"]->location);
-			Utils::printInFixedWidth("\n");
 			for (auto& item : objects)
 			{
 				if (item.second != nullptr && item.second->location == objects["player"]->location and item.first != "player")
@@ -241,10 +246,19 @@ int getParseInput()
 	{
 		if (noun != "")
 		{
-			if (objects[noun] != nullptr)
-				take(objects["player"], objects[noun]);
-			else
+			bool found = false;
+			for (auto& item: objects) {
+				if (item.second != nullptr && item.second->name == noun)
+				{
+					found = true;
+					take(objects["player"], objects[item.first]);
+					break;
+				}
+			}
+			if (!found)
+			{
 				Utils::printInFixedWidth("take what?");
+			}
 		}
 		else
 		{
@@ -256,11 +270,16 @@ int getParseInput()
 	{
 		if (noun != "")
 		{
-			if (objects[noun] != nullptr)
-			{
-				drop(objects["player"], objects[noun]);
+			bool found = false;
+			for (auto& item: objects) {
+				if (item.second != nullptr && item.second->name == noun)
+				{
+					found = true;
+					drop(objects["player"], objects[item.first]);
+					break;
+				}
 			}
-			else
+			if (!found)
 			{
 				Utils::printInFixedWidth("drop what?");
 			}
