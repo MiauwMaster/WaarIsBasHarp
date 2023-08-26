@@ -65,7 +65,7 @@ void take(Object* player, Object* toTake)
 	else if (player->location == toTake->location)
 	{
 		toTake->location = player;
-		Utils::printInFixedWidth("Taken " + toTake->name);
+		Utils::printInFixedWidth("I'll take that " + toTake->name);
 	}
 	else
 		Utils::printInFixedWidth("I can't find that...");
@@ -80,7 +80,7 @@ void drop(Object* player, Object* toDrop)
 	else if (toDrop->location == player)
 	{
 		toDrop->location = player->location;
-		Utils::printInFixedWidth("Dropped " + toDrop->name);
+		Utils::printInFixedWidth("Well, there goes that " + toDrop->name);
 	}
 	else
 		Utils::printInFixedWidth("I don't have that...");
