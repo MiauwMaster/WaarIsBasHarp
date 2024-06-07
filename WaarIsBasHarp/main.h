@@ -1,5 +1,5 @@
 #pragma once
 
-bool initializeMap();
+bool initializeMap(std::string fileName);
 int getParseInput();
 int main();
