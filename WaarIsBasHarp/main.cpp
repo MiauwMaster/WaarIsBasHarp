@@ -12,10 +12,10 @@
 std::map<std::string, Object*> objects;
 std::string intro;
 
-bool initializeMap()
+bool initializeMap(std::string fileName)
 {
 	objects.insert(std::pair<std::string, Object*>("NONE", nullptr));
-	std::string filename = "map.mapfile";
+	std::string filename = ".\\" +fileName;
 	std::ifstream input(filename);
 	if (!input.good())
 	{
@@ -136,48 +136,31 @@ int getParseInput()
 		}
 	}
 
-	//quit
-	if (verb == "quit" || verb == "exit")
-	{
-		Utils::clearScreen();
-		Utils::printInFixedWidth("Goodbye!");
-		return false;
-	}
-	//get help
-	else if (verb == "help") 
-	{
-		Utils::printInFixedWidth("You can look at where you are now by typing \'look\'");
-		Utils::printInFixedWidth("To see if there's anything nearby you can \'look around\'");
-		Utils::printInFixedWidth("you can also look in a specific directon by typing, for example, \'look north\'");
-		Utils::printInFixedWidth("the possible directions are north, east, souht, west, up and down.");
-		Utils::printInFixedWidth("If you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
-		Utils::printInFixedWidth("You can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
-		Utils::printInFixedWidth("to stop, simply type \'quit\' or \'exit\', you will lose all progress though..");
-	}
+	
 	//go somewhere
-	else if (verb == "go")
+	if (verb == "go")
 	{
-		if (noun == "north")
+		if (noun == "north" || noun == "n")
 		{
 			moveTo(objects["player"], objects["player"]->location->toNorth);
 		}
-		else if (noun == "east")
+		else if (noun == "east" || noun == "e")
 		{
 			moveTo(objects["player"], objects["player"]->location->toEast);
 		}
-		else if (noun == "south")
+		else if (noun == "south" || noun == "s")
 		{
 			moveTo(objects["player"], objects["player"]->location->toSouth);
 		}
-		else if (noun == "west")
+		else if (noun == "west" || noun == "w")
 		{
 			moveTo(objects["player"], objects["player"]->location->toWest);
 		}
-		else if (noun == "up")
+		else if (noun == "up" || noun == "u")
 		{
 			moveTo(objects["player"], objects["player"]->location->toUp);
 		}
-		else if (noun == "down")
+		else if (noun == "down" || noun == "d")
 		{
 			moveTo(objects["player"], objects["player"]->location->toDown);
 		}
@@ -289,6 +272,24 @@ int getParseInput()
 			Utils::printInFixedWidth("drop what?");
 		}
 	}
+	//quit
+	else if (verb == "quit" || verb == "exit")
+	{
+		Utils::clearScreen();
+		Utils::printInFixedWidth("Goodbye!");
+		return false;
+	}
+	//get help
+	else if (verb == "help")
+	{
+		Utils::printInFixedWidth("You can look at where you are now by typing \'look\'");
+		Utils::printInFixedWidth("To see if there's anything nearby you can \'look around\'");
+		Utils::printInFixedWidth("you can also look in a specific directon by typing, for example, \'look north\'");
+		Utils::printInFixedWidth("the possible directions are north, east, souht, west, up and down.");
+		Utils::printInFixedWidth("If you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
+		Utils::printInFixedWidth("You can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
+		Utils::printInFixedWidth("to stop, simply type \'quit\' or \'exit\', you will lose all progress though..");
+	}
 	else
 	{
 		Utils::printInFixedWidth("what now?");
@@ -301,7 +302,7 @@ int main()
 {
 	Utils::clearScreen();
 
-	if (!initializeMap())
+	if (!initializeMap("bigmap.mapfile"))
 	{
 		Utils::printInFixedWidth("Map loading went wrong!");
 		return false;
@@ -310,9 +311,9 @@ int main()
 	initscreen(objects["player"]);
 
 	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
-	Utils::printInFixedWidth("-------------------------| Welcome to TextAdventure! |-------------------------");
-	Utils::printInFixedWidth("-------------------------|      Truly original!      |-------------------------");
-	Utils::printInFixedWidth("-------------------------|          amazing          |-------------------------");
+	Utils::printInFixedWidth("-------------------------| Welcome to EnchantedQuest! |------------------------");
+	Utils::printInFixedWidth("-------------------------|      An epic journey       |------------------------");
+	Utils::printInFixedWidth("-------------------------|     filled with magic      |------------------------");
 	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
 	Utils::printInFixedWidth("\n");
 	Utils::printInFixedWidth(intro);

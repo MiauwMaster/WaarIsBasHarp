@@ -1,0 +1,381 @@
+START_INTRO
+As the sun sets on the horizon, you find yourself aboard a mystical carriage that glides through the forest on its own. You have no recollection of how you got here, but you feel an odd sense of purpose. The trees around you glow with an ethereal light, and the air is thick with magic. You know you must unravel the mysteries of this enchanted land to find your way back home.
+END_INTRO
+
+START_ROOM
+player
+player
+you see yourself, a weary traveler with a heart full of determination.
+END_ROOM
+
+START_ROOM
+enchantedForest
+Enchanted Forest
+you see a dense forest bathed in a surreal glow. The trees seem to whisper secrets of the ancient world.
+END_ROOM
+
+START_ROOM
+mysticRiver
+Mystic River
+you see a shimmering river that sparkles under the moonlight. The water is crystal clear, and you can see strange, luminous fish swimming below.
+END_ROOM
+
+START_ROOM
+ancientTree
+Ancient Tree
+you see a massive tree with sprawling branches. Its bark is covered with ancient runes that pulse with a soft light.
+END_ROOM
+
+START_ROOM
+fairyGrove
+Fairy Grove
+you see a tranquil grove where fairies flit about, their laughter like the tinkling of bells. Flowers of every color bloom here, filling the air with a sweet fragrance.
+END_ROOM
+
+START_ROOM
+wizardTower
+Wizard's Tower
+you see a tall, spiraling tower that reaches into the sky. It is said that a powerful wizard resides here, guarding ancient knowledge and powerful artifacts.
+END_ROOM
+
+START_ROOM
+dragonCave
+Dragon's Cave
+you see a dark, foreboding cave. The air is thick with the smell of sulfur, and you can hear the distant rumble of a sleeping dragon.
+END_ROOM
+
+START_ROOM
+treasureChamber
+Treasure Chamber
+you see a vast chamber filled with glittering treasures. Gold coins, precious gems, and ancient relics are scattered about, awaiting discovery.
+END_ROOM
+
+START_ROOM
+magicPortal
+Magic Portal
+you see a swirling vortex of light. This portal is said to connect different realms and can transport you to places beyond your imagination.
+END_ROOM
+
+START_ROOM
+goldenAmulet
+Golden Amulet
+you see a radiant amulet lying on the ground. It glows with a magical energy.
+END_ROOM
+
+START_ROOM
+crystalKey
+Crystal Key
+you see a key made of pure crystal. It sparkles with an inner light, hinting at its importance.
+END_ROOM
+
+START_ROOM
+mysticPond
+Mystic Pond
+you see a tranquil pond. The water is so still it acts like a mirror, reflecting the sky above. There's something magical about this place.
+END_ROOM
+
+START_ROOM
+abandonedHut
+Abandoned Hut
+you see an old hut, falling apart at the seams. The door creaks open, and inside, you can see remnants of a past life.
+END_ROOM
+
+START_ROOM
+hiddenCave
+Hidden Cave
+you see a small, dark cave entrance hidden behind a waterfall. It looks like it hasn't been discovered for ages.
+END_ROOM
+
+START_ROOM
+enchantedGarden
+Enchanted Garden
+you see a beautiful garden with flowers of every hue. There's a faint, magical aura around the place.
+END_ROOM
+
+START_ROOM
+goblinCamp
+Goblin Camp
+you see a camp filled with goblins. They are busy with their activities and haven't noticed you yet. You must be careful.
+END_ROOM
+
+START_ROOM
+mysteriousAltar
+Mysterious Altar
+you see an altar with strange symbols. It seems like it could be part of some ancient ritual.
+END_ROOM
+
+START_ROOM
+forgottenLibrary
+Forgotten Library
+you see an old library filled with dusty tomes and scrolls. It feels like a place of great knowledge.
+END_ROOM
+
+START_ROOM
+hauntedGraveyard
+Haunted Graveyard
+you see a graveyard shrouded in mist. Shadows flit between the gravestones, and you can feel an eerie presence.
+END_ROOM
+
+START_ROOM
+enchantedSword
+Enchanted Sword
+you see a sword embedded in a stone. It radiates a powerful energy.
+END_ROOM
+
+START_ROOM
+potionOfHealing
+Potion of Healing
+you see a potion bubbling in a cauldron. It looks like it could heal wounds.
+END_ROOM
+
+START_NEIGHBOUR
+player
+LOCATION	enchantedForest
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+enchantedForest
+LOCATION	NONE
+TONORTH		mysticRiver
+TOEAST		ancientTree
+TOSOUTH		abandonedHut
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+mysticRiver
+LOCATION	NONE
+TONORTH		mysticPond
+TOEAST		fairyGrove
+TOSOUTH		enchantedForest
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+mysticPond
+LOCATION	NONE
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		mysticRiver
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		enchantedSword
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+ancientTree
+LOCATION	NONE
+TONORTH		fairyGrove
+TOEAST		hiddenCave
+TOSOUTH		NONE
+TOWEST		enchantedForest
+TOUP		NONE
+TODOWN		NONE
+NEEDED		crystalKey
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+fairyGrove
+LOCATION	NONE
+TONORTH		wizardTower
+TOEAST		enchantedGarden
+TOSOUTH		ancientTree
+TOWEST		mysticRiver
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+wizardTower
+LOCATION	NONE
+TONORTH		NONE
+TOEAST		dragonCave
+TOSOUTH		fairyGrove
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		goldenAmulet
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+dragonCave
+LOCATION	NONE
+TONORTH		NONE
+TOEAST		treasureChamber
+TOSOUTH		NONE
+TOWEST		wizardTower
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+treasureChamber
+LOCATION	NONE
+TONORTH		NONE
+TOEAST		magicPortal
+TOSOUTH		NONE
+TOWEST		dragonCave
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+magicPortal
+LOCATION	treasureChamber
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+goldenAmulet
+LOCATION	fairyGrove
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+crystalKey
+LOCATION	enchantedForest
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+abandonedHut
+LOCATION	NONE
+TONORTH		enchantedForest
+TOEAST		NONE
+TOSOUTH		goblinCamp
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+hiddenCave
+LOCATION	NONE
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		ancientTree
+TOUP		NONE
+TODOWN		NONE
+NEEDED		crystalKey
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+enchantedGarden
+LOCATION	NONE
+TONORTH		hauntedGraveyard
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		fairyGrove
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+goblinCamp
+LOCATION	NONE
+TONORTH		abandonedHut
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+mysteriousAltar
+LOCATION	hiddenCave
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		ancientRelic
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+forgottenLibrary
+LOCATION	wizardTower
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+hauntedGraveyard
+LOCATION	NONE
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		enchantedGarden
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		holyWater
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+enchantedSword
+LOCATION	mysteriousAltar
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR
+
+START_NEIGHBOUR
+potionOfHealing
+LOCATION	goblinCamp
+TONORTH		NONE
+TOEAST		NONE
+TOSOUTH		NONE
+TOWEST		NONE
+TOUP		NONE
+TODOWN		NONE
+NEEDED		NONE
+END_NEIGHBOUR

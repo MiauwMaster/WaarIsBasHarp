@@ -31,6 +31,7 @@
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bigmap.mapfile" />
     <None Include="map.mapfile" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
