@@ -41,7 +41,7 @@ bool initializeMap(std::string fileName)
 		if (buffer == "START_INTRO")
 		{
 			input.ignore();
-			getline(input, intro);
+			std::getline(input, intro);
 		}
 
 		else if (buffer == "START_HEADER")
@@ -51,7 +51,7 @@ bool initializeMap(std::string fileName)
 
 			for (size_t i = 0; i < 5; i++)
 			{
-				getline(input, tmp);
+				std::getline(input, tmp);
 				header.push_back(tmp);
 			}
 		}
@@ -61,8 +61,8 @@ bool initializeMap(std::string fileName)
 			input >> id;
 
 			input.ignore();
-			getline(input, name);
-			getline(input, description);
+			std::getline(input, name);
+			std::getline(input, description);
 			objects.insert(std::pair<std::string, Object*>(id, new Object(name, description)));
 		}
 
