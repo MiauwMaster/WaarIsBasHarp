@@ -1,6 +1,13 @@
 START_INTRO
 Oh damn! You're on the wrong bus! You have no idea where this one is going and this late at night you are in no mood to find out either! Better to get off at the first stop and take the next one back I guess!
 END_INTRO
+START_HEADER
+-------------------------------------------------------------------------------
+-------------------------| Welcome to TextAdventure! |-------------------------
+-------------------------|      Truly original!      |-------------------------
+-------------------------|          amazing          |-------------------------
+-------------------------------------------------------------------------------
+END_HEADER
 START_ROOM
 player
 player

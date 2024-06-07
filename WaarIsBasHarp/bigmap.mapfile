@@ -2,6 +2,14 @@ START_INTRO
 As the sun sets on the horizon, you find yourself aboard a mystical carriage that glides through the forest on its own. You have no recollection of how you got here, but you feel an odd sense of purpose. The trees around you glow with an ethereal light, and the air is thick with magic. You know you must unravel the mysteries of this enchanted land to find your way back home.
 END_INTRO
 
+START_HEADER
+-------------------------------------------------------------------------------
+-------------------------| Welcome to EnchantedQuest! |------------------------
+-------------------------|      An epic journey       |------------------------
+-------------------------|     filled with magic      |------------------------
+-------------------------------------------------------------------------------
+END_HEADER
+
 START_ROOM
 player
 player

@@ -8,9 +8,11 @@
 #include <map>
 #include <sstream>
 #include <tuple>
+#include <vector>
 
 std::map<std::string, Object*> objects;
 std::string intro;
+std::vector<std::string> header;
 
 bool initializeMap(std::string fileName)
 {
@@ -42,7 +44,19 @@ bool initializeMap(std::string fileName)
 			getline(input, intro);
 		}
 
-		if (buffer == "START_ROOM")
+		else if (buffer == "START_HEADER")
+		{
+			std::string tmp;
+			input.ignore();
+
+			for (size_t i = 0; i < 5; i++)
+			{
+				getline(input, tmp);
+				header.push_back(tmp);
+			}
+		}
+
+		else if (buffer == "START_ROOM")
 		{
 			input >> id;
 
@@ -52,7 +66,7 @@ bool initializeMap(std::string fileName)
 			objects.insert(std::pair<std::string, Object*>(id, new Object(name, description)));
 		}
 
-		if (buffer == "END_ROOM" || buffer == "END_NEIGHBOUR") {
+		else if (buffer == "END_ROOM" || buffer == "END_NEIGHBOUR") {
 			// clear strings
 			id.clear();
 			name.clear();
@@ -68,7 +82,7 @@ bool initializeMap(std::string fileName)
 		}
 
 		// setup neighbours
-		if (buffer == "START_NEIGHBOUR")
+		else if (buffer == "START_NEIGHBOUR")
 		{
 			input >> id;
 
@@ -194,27 +208,27 @@ int getParseInput()
 				}
 			}
 		}
-		else if (noun == "north")
+		else if (noun == "north" || noun == "n")
 		{
 			look(objects["player"]->location->toNorth);
 		}
-		else if (noun == "east")
+		else if (noun == "east" || noun == "e")
 		{
 			look(objects["player"]->location->toEast);
 		}
-		else if (noun == "south")
+		else if (noun == "south" || noun == "s")
 		{
 			look(objects["player"]->location->toSouth);
 		}
-		else if (noun == "west")
+		else if (noun == "west" || noun == "w")
 		{
 			look(objects["player"]->location->toWest);
 		}
-		else if (noun == "up")
+		else if (noun == "up" || noun == "u")
 		{
 			look(objects["player"]->location->toUp);
 		}
-		else if (noun == "down")
+		else if (noun == "down" || noun == "d")
 		{
 			look(objects["player"]->location->toDown);
 		}
@@ -285,7 +299,7 @@ int getParseInput()
 		Utils::printInFixedWidth("You can look at where you are now by typing \'look\'");
 		Utils::printInFixedWidth("To see if there's anything nearby you can \'look around\'");
 		Utils::printInFixedWidth("you can also look in a specific directon by typing, for example, \'look north\'");
-		Utils::printInFixedWidth("the possible directions are north, east, souht, west, up and down.");
+		Utils::printInFixedWidth("the possible directions are (n)orth, (e)ast, (s)outh, (w)est, (u)p and (d)own.");
 		Utils::printInFixedWidth("If you spot somewhere you like to go you can do so by typing \'go\' plus the direction, for example type \'go north\'");
 		Utils::printInFixedWidth("You can take and drop items by typing \'take item\' and \'drop item\', for example \'take coin\'");
 		Utils::printInFixedWidth("to stop, simply type \'quit\' or \'exit\', you will lose all progress though..");
@@ -310,11 +324,11 @@ int main()
 	
 	initscreen(objects["player"]);
 
-	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
-	Utils::printInFixedWidth("-------------------------| Welcome to EnchantedQuest! |------------------------");
-	Utils::printInFixedWidth("-------------------------|      An epic journey       |------------------------");
-	Utils::printInFixedWidth("-------------------------|     filled with magic      |------------------------");
-	Utils::printInFixedWidth("-------------------------------------------------------------------------------");
+
+	for (size_t i = 0; i < header.size(); i++)
+	{
+		Utils::printInFixedWidth(header[i]);
+	}
 	Utils::printInFixedWidth("\n");
 	Utils::printInFixedWidth(intro);
 	Utils::printInFixedWidth("\n");
